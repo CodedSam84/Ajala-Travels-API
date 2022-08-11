@@ -6,4 +6,6 @@ class Room < ApplicationRecord
   validates :accommodate, presence: true
   validates :bedroom, presence: true
   validates :bathroom, presence: true
+
+  has_many_attached :photos
 end
