@@ -11,7 +11,7 @@ class TwilioClient
     client.messages.create(
       from: twilio_phone_no,
       to: user.phone,
-      body: "Hey friend!"
+      body: "Your pin is #{user.pin}"
     )
   end
 
