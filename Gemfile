@@ -7,6 +7,7 @@ gem 'rails', '~> 6.1.5'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'devise', '~> 4.8', '>= 4.8.1'
+gem 'twilio-ruby', '~> 5.70', '>= 5.70.1'
 
 # gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
