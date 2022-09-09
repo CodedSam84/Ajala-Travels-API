@@ -11,4 +11,6 @@ class Room < ApplicationRecord
   has_many :reservations
 
   has_many :guest_reviews
+
+  enum status: { request: 0, instant: 1 }
 end
