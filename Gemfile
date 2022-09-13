@@ -9,7 +9,6 @@ gem 'puma', '~> 5.0'
 gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'twilio-ruby', '~> 5.70', '>= 5.70.1'
 gem 'omniauth-google-oauth2', '~> 1.1', '>= 1.1.1'
-gem 'devise_token_auth', '~> 1.2'
 gem 'httparty', '~> 0.20.0'
 
 gem 'jbuilder', '~> 2.7'
