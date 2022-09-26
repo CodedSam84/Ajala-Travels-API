@@ -6,12 +6,13 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
 
     resource.save
     if resource.persisted?
-      render json: { success: true }
+      render json: { success: true }, status: :ok
     else
       clean_up_passwords resource
       set_minimum_password_length
-      
-      render json: {error: resourse.errors.messages}
+
+      render json: {error: resourse.errors.messages}, status: :unprocessable_entity
+    end
   end
 
   protected
