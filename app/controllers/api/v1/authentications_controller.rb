@@ -21,13 +21,8 @@ class Api::V1::AuthenticationsController < ApplicationController
         uid: parsed_response[:kid],
         provider: "Google"
       )
-        user.generate_auth_token
-        
-        if user.save
-          render json: user, status: :ok
-        else
-          render json: { error: user.errors.messages, success: false }, status: :unprocessable_entity
-        end
+
+      render_response
       end
 
     else
@@ -35,11 +30,32 @@ class Api::V1::AuthenticationsController < ApplicationController
     end
   end
 
-  def signin
+  def sign_in
+    user = User.find_by_email(params[:email])
 
+    if user&.user.valid_password?(params[:password])
+      render_response
+    else
+      render json: { error: "Invalid email or password", success: false }, status: :unauthorized
+    end
   end
 
-  def signout
+  def sign_out
+    user = User.find_by(access_token: params[:access_token])
+    user.generate_auth_token
+    user.save
+    render json: { success: true }, status: :ok
+  end
 
+  private
+
+  def render_response
+    user.generate_auth_token
+
+    if user.save
+      render json: user, status: :ok
+    else
+      render json: { error: user.errors.messages, success: false }, status: :unprocessable_entity
+    end
   end
 end
