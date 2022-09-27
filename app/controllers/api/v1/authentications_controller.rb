@@ -1,5 +1,6 @@
 class Api::V1::AuthenticationsController < ApplicationController
   include HTTParty
+  before_action :authenticate_with_token!, only: [:sign_out]
 
   def google
     if params[:access_token]
@@ -41,7 +42,7 @@ class Api::V1::AuthenticationsController < ApplicationController
   end
 
   def sign_out
-    user = User.find_by(access_token: params[:access_token])
+    user = User.find_by(auth_token: params[:access_token])
     user.generate_auth_token
     user.save
     render json: { success: true }, status: :ok
