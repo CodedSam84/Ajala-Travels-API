@@ -1,5 +1,5 @@
 class Api::V1::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_permitted_parameters
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   def create
     build_resource(sign_up_params)
@@ -11,7 +11,7 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
       clean_up_passwords resource
       set_minimum_password_length
 
-      render json: {error: resourse.errors.messages}, status: :unprocessable_entity
+      render json: {error: resource.errors.messages}, status: :unprocessable_entity
     end
   end
 
