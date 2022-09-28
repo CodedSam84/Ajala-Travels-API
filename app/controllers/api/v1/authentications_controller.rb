@@ -12,20 +12,10 @@ class Api::V1::AuthenticationsController < ApplicationController
       user = User.find_by_email(user_data["email"])
       
       if user
-        user.generate_auth_token
-        user.save
-        render json: user, status: :ok
+        return_user
       else
-        @user = User.new(
-        email: user_data["email"],
-        password: Devise.friendly_token[0,20],
-        fullname: user_data["name"],
-        image: user_data["picture"],
-        uid: user_data["kid"],
-        provider: "Google"
-      )
-    
-      render_response
+        new_google_user
+        render_response
       end
 
     else
@@ -64,5 +54,22 @@ class Api::V1::AuthenticationsController < ApplicationController
     else
       render json: { error: @user.errors.messages, success: false }, status: :unprocessable_entity
     end
+  end
+
+  def new_google_user
+    @user = User.new(
+      email: user_data["email"],
+      password: Devise.friendly_token[0,20],
+      fullname: user_data["name"],
+      image: user_data["picture"],
+      uid: user_data["kid"],
+      provider: "Google"
+    )
+  end
+
+  def return_user
+    user.generate_auth_token
+    user.save
+    render json: user, status: :ok
   end
 end
