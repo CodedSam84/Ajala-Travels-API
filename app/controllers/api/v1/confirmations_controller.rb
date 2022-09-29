@@ -20,4 +20,9 @@ class Api::V1::ConfirmationsController < Devise::ConfirmationsController
       render json: { error: "Cannot find user" }, status: :unprocessable_entity
     end
   end
+
+  private
+  def after_confirmation_path_for(resource_name, resource)
+    "/hotels"
+  end
 end
