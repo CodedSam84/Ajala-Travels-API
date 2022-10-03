@@ -85,6 +85,4 @@ test:
 production:
   <<: *default
   url: <%= ENV['DATABASE_URL'] %>
-  database: Ajala_Travels_API_production
-  username: railsuser
-  password: <%= Rails.application.credentials.dig(:postgres_password) %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
