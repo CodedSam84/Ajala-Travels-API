@@ -84,6 +84,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: Ajala_Travels_API_production
   username: Ajala_Travels_API
   password: <%= ENV['AJALA_TRAVELS_API_DATABASE_PASSWORD'] %>
