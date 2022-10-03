@@ -20,12 +20,12 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: localhost
   username: railsuser
   password: <%= Rails.application.credentials.dig(:postgres_password) %>
 
 development:
   <<: *default
+  host: localhost
   database: Ajala_Travels_API_development
 
   # The specified database role being used to connect to postgres.
@@ -86,5 +86,5 @@ production:
   <<: *default
   url: <%= ENV['DATABASE_URL'] %>
   database: Ajala_Travels_API_production
-  username: Ajala_Travels_API
-  password: <%= ENV['AJALA_TRAVELS_API_DATABASE_PASSWORD'] %>
+  username: railsuser
+  password: <%= Rails.application.credentials.dig(:postgres_password) %>
