@@ -13,7 +13,7 @@ class Api::V1::AuthenticationsController < ApplicationController
         user = User.find_by_email(user_data["email"])
       
         if user
-          return_user
+          return_user(user)
         else
           new_google_user(user_data)
           render_response
@@ -70,7 +70,7 @@ class Api::V1::AuthenticationsController < ApplicationController
     )
   end
 
-  def return_user
+  def return_user(user)
     user.generate_auth_token
     user.save
     render json: user, status: :ok
