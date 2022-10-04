@@ -9,17 +9,20 @@ class Api::V1::AuthenticationsController < ApplicationController
       response = HTTParty.get(url)
       user_data = response.parsed_response
 
-      user = User.find_by_email(user_data["email"])
+      unless user_data.include? "error_description"
+        user = User.find_by_email(user_data["email"])
       
-      if user
-        return_user
+        if user
+          return_user
+        else
+          new_google_user(user_data)
+          render_response
+        end
       else
-        new_google_user
-        render_response
+        render json: { error: "Access denied!", success: false }, status: :unprocessable_entity
       end
-
     else
-      render json: { error: "Invalid google token", success: false }, status: :unprocessable_entity
+      render json: { error: "Google access token expected", success: false }, status: :unprocessable_entity
     end
   end
 
@@ -56,7 +59,7 @@ class Api::V1::AuthenticationsController < ApplicationController
     end
   end
 
-  def new_google_user
+  def new_google_user(user_data)
     @user = User.new(
       email: user_data["email"],
       password: Devise.friendly_token[0,20],
