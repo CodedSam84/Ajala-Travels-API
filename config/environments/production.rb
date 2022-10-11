@@ -62,7 +62,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
 
-  config.action_mailer.default_url_options = { host: 'ajala-travels.up.railway.app' }
+  config.action_mailer.default_url_options = { host: 'https://ajala-travels.up.railway.app' }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
@@ -118,7 +118,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address:         'smtp.gmail.com',
     port:            587,
-    domain:          'https://steady-sunshine-b851be.netlify.app/',
+    domain:          'steady-sunshine-b851be.netlify.app/',
     user_name:       Rails.application.credentials.dig(:google_username),
     password:        Rails.application.credentials.dig(:google_password),
     authentication:  'plain',
