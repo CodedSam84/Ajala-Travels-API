@@ -61,7 +61,7 @@ Rails.application.configure do
     user_name:       Rails.application.credentials.dig(:google_username),
     password:        Rails.application.credentials.dig(:google_password),
     authentication:  'plain',
-    enable_starttls: true,
+    enable_starttls_auto: true,
     open_timeout:    5,
     read_timeout:    5 
   }

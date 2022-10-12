@@ -118,11 +118,11 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address:         'smtp.gmail.com',
     port:            2525,
-    domain:          'ajala-travels.up.railway.app',
+    domain:          'gmail.com',
     user_name:       Rails.application.credentials.dig(:google_username),
     password:        Rails.application.credentials.dig(:google_password),
     authentication:  'plain',
-    enable_starttls: true,
+    enable_starttls_auto: true,
     open_timeout:    5,
     read_timeout:    5 
   }
