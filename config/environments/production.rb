@@ -118,7 +118,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address:         'smtp.gmail.com',
     port:            587,
-    domain:          'steady-sunshine-b851be.netlify.app/',
+    domain:          'gmail.com',
     user_name:       Rails.application.credentials.dig(:google_username),
     password:        Rails.application.credentials.dig(:google_password),
     authentication:  'plain',
