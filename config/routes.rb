@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, only: :confirmations
+  devise_for :users, only: [ :confirmations, :passwords ]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   namespace :api, defaults: { format: :json } do
@@ -11,6 +11,7 @@ Rails.application.routes.draw do
         post '/google', to: 'authentications#google'
         post '/sign-in', to: 'authentications#sign_in'
         get '/sign-out', to: 'authentications#sign_out'
+        post '/password-reset-instructions', to: 'passwords#password_reset_instructions'
       end
     end
   end
