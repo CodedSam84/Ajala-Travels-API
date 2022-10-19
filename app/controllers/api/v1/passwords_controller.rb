@@ -5,7 +5,7 @@ class Api::V1::PasswordsController < Devise::PasswordsController
     if successfully_sent?(resource)
       render json: { success: true }, status: :ok
     else
-      render json: { error: "Something went wrong..." }, status: :unprocessable_entity
+      render json: { error: "Something went wrong...." }, status: :unprocessable_entity
     end
   end
 
