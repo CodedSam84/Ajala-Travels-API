@@ -11,7 +11,7 @@ Rails.application.routes.draw do
         post '/google', to: 'authentications#google'
         post '/sign-in', to: 'authentications#sign_in'
         get '/sign-out', to: 'authentications#sign_out'
-        post '/password-reset-instructions', to: 'passwords#password_reset_instructions'
+        post '/user/password-instructions', to: 'passwords#password_reset_instructions'
       end
     end
   end

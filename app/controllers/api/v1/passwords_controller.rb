@@ -16,6 +16,6 @@ class Api::V1::PasswordsController < Devise::PasswordsController
   private
 
   def password_params
-    params.require(:user).permit(:email)
+    params.permit(:email)
   end
 end
