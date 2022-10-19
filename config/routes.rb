@@ -12,6 +12,7 @@ Rails.application.routes.draw do
         post '/sign-in', to: 'authentications#sign_in'
         get '/sign-out', to: 'authentications#sign_out'
         post '/user/password-instructions', to: 'passwords#password_reset_instructions'
+        post '/user/password', to: 'passwords#update'
       end
     end
   end
