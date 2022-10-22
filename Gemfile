@@ -10,6 +10,7 @@ gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'twilio-ruby', '~> 5.70', '>= 5.70.1'
 gem 'omniauth-google-oauth2', '~> 1.1', '>= 1.1.1'
 gem 'httparty', '~> 0.20.0'
+gem 'premailer-rails', '~> 1.11', '>= 1.11.1'
 
 gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
