@@ -4,10 +4,28 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
       /* Email styles need to be inline */
+      .mailer-content {
+        background-color: white;
+        width: 70%;
+        padding: 50px 50px;
+        align-items: center;
+        margin: auto;
+        border-radius: 5px;
+      }
+
+      .mailer-container {
+        background-color: #f9f8f7;
+        width: 100%;
+        padding: 30px 0px;
+      }
     </style>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="mailer-container">
+      <div class="mailer-content">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
